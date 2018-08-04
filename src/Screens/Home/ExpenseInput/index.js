@@ -1,10 +1,10 @@
-import React from "react";
+import React, { Component } from "react";
 import Icon from "react-native-vector-icons/dist/Ionicons";
 
-import { View, TextInput, StyleSheet } from "react-native";
+import { View, TextInput, StyleSheet, TouchableOpacity } from "react-native";
 
 const styles = StyleSheet.create({
-  expenseInputContainer: {    
+  expenseInputContainer: {
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
@@ -32,47 +32,86 @@ const styles = StyleSheet.create({
   input: {}
 });
 
-const ExpenseInput = ({theme}) => {
-  let {
-    expenseInputContainer,
-    textInputContainer,
-    input,
-    completeButtonContainer,
-    categoryButtonContainer
-  } = styles;
-  return (
-    <View style={expenseInputContainer}>
-      <View
-        style={[
-          categoryButtonContainer,
-          { backgroundColor: theme.primaryBackgroundColor }
-        ]}
-      >
-        <Icon name="ios-basket" size={18} />
-      </View>
+class ExpenseInput extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      expense: {
+        category: "default",
+        amount: 0
+      }
+    };
 
-      <View style={textInputContainer}>
-        <TextInput
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleCategoryClick = this.handleCategoryClick.bind(this);
+  }
+
+  handleSubmit = () => {
+    alert(this.state.expense.amount);
+  };
+
+  handleCategoryClick = () => {
+    alert("Categopry");
+  };
+
+  onAmountChanged = (amount) =>{
+    this.setState({
+      ...this.state,
+      expense: {
+        ...this.state.expense,
+        amount: amount
+      }
+    });
+  }
+
+  render() {
+    let {
+      expenseInputContainer,
+      textInputContainer,
+      input,
+      completeButtonContainer,
+      categoryButtonContainer
+    } = styles;
+    let { theme } = this.props;
+    return (
+      <View style={expenseInputContainer}>
+        <TouchableOpacity
           style={[
-            input,
-            {
-              backgroundColor: theme.primaryTextInputBackgroundColor,
-              color: theme.primaryTextInputColor
-            }
+            categoryButtonContainer,
+            { backgroundColor: theme.primaryBackgroundColor }
           ]}
-          placeholder="0$"
-        />
-      </View>
+          onPress={this.handleCategoryClick}
+        >
+          <Icon name="ios-basket" size={18} />
+        </TouchableOpacity>
 
-      <View
-        style={[
-          completeButtonContainer,
-          { backgroundColor: theme.secondaryColor }
-        ]}
-      >
-        <Icon name="md-checkmark" size={24} />
+        <View style={textInputContainer}>
+          <TextInput
+            style={[
+              input,
+              {
+                backgroundColor: theme.primaryTextInputBackgroundColor,
+                color: theme.primaryTextInputColor
+              }
+            ]}
+            placeholder="0$"
+            keyboardType="number-pad"
+            onChangeText={this.onAmountChanged}
+          />
+        </View>
+
+        <TouchableOpacity
+          style={[
+            completeButtonContainer,
+            { backgroundColor: theme.secondaryColor }
+          ]}
+          onPress={this.handleSubmit}
+        >
+          <Icon name="md-checkmark" size={24} />
+        </TouchableOpacity>
       </View>
-    </View>
-  );
-};
+    );
+  }
+}
+({ theme }) => {};
 export default ExpenseInput;
