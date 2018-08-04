@@ -6,12 +6,12 @@ import Banner from "./Banner";
 
 const styles = StyleSheet.create({
   homeContainer: {
-    flex: 1,
-    
+    flex: 1
   },
   banner: {
-    flex: 1,
-    elevation:2
+    height: 200,
+    elevation: 2,
+    alignItems: "stretch"
   },
   content: {
     flex: 2,
@@ -19,16 +19,14 @@ const styles = StyleSheet.create({
   }
 });
 
-const Home = () => {
+const Home = ({ screenProps }) => {
   let { homeContainer, banner, content } = styles;
   return (
-      <ScrollView contentContainerStyle={homeContainer}>
+    <ScrollView contentContainerStyle={homeContainer}>
       <View style={banner}>
-        <Banner />
+        <Banner theme={screenProps.theme} />
       </View>
-      <View style={content}>
-        <Banner />
-      </View>
+      <View style={content}>{/* <Banner theme={screenProps.theme} /> */}</View>
     </ScrollView>
   );
 };

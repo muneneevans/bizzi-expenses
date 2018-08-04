@@ -7,15 +7,33 @@ import Home from "../Home";
 
 const theme = {
   primaryColor: "#4CAF50",
-  scondaryColor: "#FFD600"
+  secondaryColor: "#FFD600",
+
+  primaryBackgroundColor: "#ffffff",
+  secondaryBackgroundColor: "#000000",
+
+  primaryTextBackgroundColor: "#ffffff",
+  secondaryTextBackgroundColor: "#000000",  
+  primaryTextColor: "#000000",
+  secondaryTextColor: "#ffffff",
+  
+  primaryTextInputBackgroundColor: "#ffffff",
+  secondaryTextInputBackgroundColor: "#000000",  
+  primaryTextInputColor: "#000000",
+  secondaryTextInputColor: "#ffffff",
+
+  massiveFontSize: 54,
+  largeFontSize: 44,
+  defaultFontSize: 24,
+  smallFontSize: 24,
+  tinyFontSize: 24
 };
 
 const HomeRoute = createStackNavigator({
   Home: {
     screen: Home,
     header: null,
-    navigationOptions: {
-      theme: theme,
+    navigationOptions: {     
       header: null
     }
   }
@@ -27,7 +45,7 @@ class App extends Component {
   }
 
   render() {
-    return <HomeRoute  />;
+    return <HomeRoute screenProps={{theme}} />;
   }
 }
 
