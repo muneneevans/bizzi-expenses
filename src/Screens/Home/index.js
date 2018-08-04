@@ -1,6 +1,7 @@
 import React from "react";
 import { ScrollView, View, Text, StyleSheet } from "react-native";
 
+
 //import screens
 import Banner from "./Banner";
 
@@ -10,7 +11,7 @@ const styles = StyleSheet.create({
   },
   banner: {
     height: 200,
-    elevation: 2,
+    elevation: 7,
     alignItems: "stretch"
   },
   content: {
