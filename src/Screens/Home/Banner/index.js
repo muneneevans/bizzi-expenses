@@ -19,17 +19,16 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center"
   },
-  bannerPrimaryText: { textAlign: "center" }
+  bannerPrimaryText: { textAlign: "center" },
+  bannerSecondaryText: {
+    paddingLeft: 50,
+    paddingRight: 50,
+    textAlign: "center"
+  }
 });
 const Banner = ({ theme }) => {
-  let { bannerContainer, bannerContent, bannerPrimaryText } = styles;
-  return (
-    <View
-      style={[
-        bannerContainer,
-        { backgroundColor: theme ? theme.primaryColor : "" }
-      ]}
-    >
+  let { bannerContainer, bannerContent, bannerPrimaryText ,bannerSecondaryText } = styles;
+  return <View style={[bannerContainer, { backgroundColor: theme ? theme.primaryColor : "" }]}>
       <View style={bannerContent}>
         <Text
           style={[
@@ -41,9 +40,9 @@ const Banner = ({ theme }) => {
         </Text>
 
         <ExpenseInput theme={theme} />
+      <Text style={[ bannerSecondaryText,  {fontSize: theme.tinyFontSize, color: theme.secondaryTextColor}]}>quickly record any expense you have incurred</Text>
       </View>
-    </View>
-  );
+    </View>;
 };
 
 export default Banner;

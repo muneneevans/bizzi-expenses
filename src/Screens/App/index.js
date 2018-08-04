@@ -26,7 +26,7 @@ const theme = {
   largeFontSize: 44,
   defaultFontSize: 24,
   smallFontSize: 24,
-  tinyFontSize: 24
+  tinyFontSize: 12
 };
 
 const HomeRoute = createStackNavigator({
