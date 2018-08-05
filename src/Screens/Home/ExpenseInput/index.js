@@ -64,6 +64,8 @@ class ExpenseInput extends Component {
     });
   }
 
+  
+
   render() {
     let {
       expenseInputContainer,
@@ -97,6 +99,7 @@ class ExpenseInput extends Component {
             placeholder="0$"
             keyboardType="number-pad"
             onChangeText={this.onAmountChanged}
+            onSubmitEditing={this.handleSubmit}
           />
         </View>
 
