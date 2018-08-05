@@ -13,17 +13,18 @@ const theme = {
   secondaryBackgroundColor: "#000000",
 
   primaryTextBackgroundColor: "#ffffff",
-  secondaryTextBackgroundColor: "#000000",  
+  secondaryTextBackgroundColor: "#000000",
   primaryTextColor: "#000000",
   secondaryTextColor: "#ffffff",
-  
+
   primaryTextInputBackgroundColor: "#ffffff",
-  secondaryTextInputBackgroundColor: "#000000",  
+  secondaryTextInputBackgroundColor: "#000000",
   primaryTextInputColor: "#000000",
   secondaryTextInputColor: "#ffffff",
 
   massiveFontSize: 54,
   largeFontSize: 44,
+  mediumFontSize: 34,
   defaultFontSize: 24,
   smallFontSize: 24,
   tinyFontSize: 12

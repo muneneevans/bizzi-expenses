@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Icon from "react-native-vector-icons/dist/Ionicons";
+import Icon from "react-native-vector-icons/dist/Feather";
 
 import { View, TextInput, StyleSheet, TouchableOpacity } from "react-native";
 
@@ -54,7 +54,7 @@ class ExpenseInput extends Component {
     alert("Categopry");
   };
 
-  onAmountChanged = (amount) =>{
+  onAmountChanged = amount => {
     this.setState({
       ...this.state,
       expense: {
@@ -62,9 +62,7 @@ class ExpenseInput extends Component {
         amount: amount
       }
     });
-  }
-
-  
+  };
 
   render() {
     let {
@@ -74,7 +72,8 @@ class ExpenseInput extends Component {
       completeButtonContainer,
       categoryButtonContainer
     } = styles;
-    let { theme } = this.props;
+    let { theme, categories } = this.props;
+    let defaultCategory = categories[0];
     return (
       <View style={expenseInputContainer}>
         <TouchableOpacity
@@ -84,7 +83,7 @@ class ExpenseInput extends Component {
           ]}
           onPress={this.handleCategoryClick}
         >
-          <Icon name="ios-basket" size={18} />
+          <Icon name={defaultCategory.icon} size={18} color={defaultCategory.color}/>
         </TouchableOpacity>
 
         <View style={textInputContainer}>
@@ -110,7 +109,7 @@ class ExpenseInput extends Component {
           ]}
           onPress={this.handleSubmit}
         >
-          <Icon name="md-checkmark" size={24} />
+          <Icon name="check" size={24} />
         </TouchableOpacity>
       </View>
     );

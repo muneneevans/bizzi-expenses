@@ -1,6 +1,11 @@
 import React from "react";
 import { ScrollView, View, Text, StyleSheet } from "react-native";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
 
+//import redux actions
+import { getCategories } from "../../Store/Categories/actions";
+import { getCategories as getCategoriesSelector } from "./selectors";
 
 //import screens
 import Banner from "./Banner";
@@ -10,7 +15,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   banner: {
-    height: 200,
+    height: 250,
     elevation: 7,
     alignItems: "stretch"
   },
@@ -20,16 +25,32 @@ const styles = StyleSheet.create({
   }
 });
 
-const Home = ({ screenProps }) => {
+const Home = ({ screenProps, categories }) => {
   let { homeContainer, banner, content } = styles;
+  
   return (
     <ScrollView contentContainerStyle={homeContainer}>
       <View style={banner}>
-        <Banner theme={screenProps.theme} />
+        <Banner theme={screenProps.theme} categories={categories} />
       </View>
       <View style={content}>{/* <Banner theme={screenProps.theme} /> */}</View>
     </ScrollView>
   );
 };
 
-export default Home;
+const mapStateToProps = state => {
+  return {
+    categories: getCategoriesSelector(state)
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getCategories: bindActionCreators(getCategories, dispatch)
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home);
