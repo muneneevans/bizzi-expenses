@@ -5,7 +5,7 @@ const initialState = {
   categories: [
     {
       name: "default",
-      icon: "truck",
+      icon: "tv",
       color: "red"
     }
   ],
@@ -17,7 +17,16 @@ export const categoriesReducer = (state = initialState, action = {}) => {
     case actionTypes.GET_CATEOGORIES_REQUESTED:
       return {
         ...state,
-        _getCaategoriesProcess: { status: processTypes.SUCCESS }
+        _getCaategoriesProcess: { status: processTypes.PROCESSING }
+      };
+
+    case actionTypes.GET_CATEOGORIES_SUCCEEDED:
+      return {
+        ...state,
+        _getCaategoriesProcess: {
+          status: processTypes.SUCCESS
+        },
+        categories: action.payload.categories
       };
 
     default:
