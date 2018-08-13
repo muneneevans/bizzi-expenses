@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center"
   },
-  bannerPrimaryText: { textAlign: "center" , marginBottom:20},
+  bannerPrimaryText: { textAlign: "center", marginBottom: 20 },
   bannerSecondaryText: {
     paddingLeft: 50,
     paddingRight: 50,
@@ -44,7 +44,11 @@ const Banner = ({ theme, categories }) => {
         <Text
           style={[
             bannerPrimaryText,
-            { color: theme.primaryTextColor, fontSize: theme.mediumFontSize }
+            {
+              color: theme.primaryTextColor,
+              fontSize: theme.mediumFontSize,
+              fontFamily: theme.primaryFontFamily
+            }
           ]}
         >
           Just spent
@@ -54,7 +58,11 @@ const Banner = ({ theme, categories }) => {
         <Text
           style={[
             bannerSecondaryText,
-            { fontSize: theme.tinyFontSize, color: theme.secondaryTextColor }
+            {
+              fontSize: theme.tinyFontSize,
+              color: theme.secondaryTextColor,
+              fontFamily: theme.primaryFontFamily
+            }
           ]}
         >
           quickly record any expense you have incurred

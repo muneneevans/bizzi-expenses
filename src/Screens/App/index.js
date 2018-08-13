@@ -9,6 +9,8 @@ const theme = {
   primaryColor: "#4CAF50",
   secondaryColor: "#FFD600",
 
+  primaryFontFamily: "VarelaRound-Regular",
+
   primaryBackgroundColor: "#ffffff",
   secondaryBackgroundColor: "#000000",
 
@@ -34,7 +36,7 @@ const HomeRoute = createStackNavigator({
   Home: {
     screen: Home,
     header: null,
-    navigationOptions: {     
+    navigationOptions: {
       header: null
     }
   }
@@ -46,7 +48,7 @@ class App extends Component {
   }
 
   render() {
-    return <HomeRoute screenProps={{theme}} />;
+    return <HomeRoute screenProps={{ theme }} />;
   }
 }
 
