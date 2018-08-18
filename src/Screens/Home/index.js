@@ -13,6 +13,7 @@ import {
 
 //import screens
 import Banner from "./Banner";
+import CategoryList from "./CategoryList";
 
 const styles = StyleSheet.create({
   homeContainer: {
@@ -46,7 +47,7 @@ class Home extends Component {
           {/* <Banner theme={screenProps.theme} categories={categories} /> */}
         </View>
         <View style={content}>
-          {/* <Banner theme={screenProps.theme} categories={categories} /> */}
+          <CategoryList categories={categories} />
         </View>
       </ScrollView>
     );

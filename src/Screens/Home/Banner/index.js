@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
   },
   bannerPrimaryText: { textAlign: "center", marginBottom: 20 },
   bannerSecondaryText: {
+    paddingTop:10,
     paddingLeft: 50,
     paddingRight: 50,
     textAlign: "center"

@@ -5,7 +5,7 @@ import { isNull, isEmpty } from "../../lib/utils";
 
 const config = {
   schema: [categorySchema],
-  schemaVersion: 2
+  schemaVersion: 1
 };
 
 const fetchLocalCategories = () => {

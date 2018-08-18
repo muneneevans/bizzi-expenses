@@ -9,14 +9,17 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     minWidth: 250,
-    maxWidth: 500
+    maxWidth: 500,
+    borderRadius: 100
   },
   categoryButtonContainer: {
     flex: 1,
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    height: 40
+    height: 40,
+    borderBottomLeftRadius: 2,
+    borderTopLeftRadius: 2
   },
   textInputContainer: {
     flex: 5,
@@ -27,11 +30,12 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    height: 40
+    height: 40,
+    borderBottomRightRadius: 2,
+    borderTopRightRadius: 2
   },
   input: {}
 });
-
 class ExpenseInput extends Component {
   constructor(props) {
     super(props);
@@ -50,8 +54,8 @@ class ExpenseInput extends Component {
     alert(this.state.expense.amount);
   };
 
-  handleCategoryClick = () => {
-    alert("Categopry");
+  handleCategoryClick = text => {
+    alert(text);
   };
 
   onAmountChanged = amount => {
@@ -81,9 +85,15 @@ class ExpenseInput extends Component {
             categoryButtonContainer,
             { backgroundColor: theme.primaryBackgroundColor }
           ]}
-          onPress={this.handleCategoryClick}
+          onPress={() => {
+            this.handleCategoryClick(defaultCategory.name);
+          }}
         >
-          <Icon name={defaultCategory.icon} size={18} color={defaultCategory.color}/>
+          <Icon
+            name={defaultCategory.icon}
+            size={18}
+            color={defaultCategory.color}
+          />
         </TouchableOpacity>
 
         <View style={textInputContainer}>
