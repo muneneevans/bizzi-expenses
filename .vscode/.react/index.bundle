@@ -103259,7 +103259,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
       _this = _possibleConstructorReturn(this, _getPrototypeOf(ExpenseInput).call(this, props));
 
       _this.handleSubmit = function () {
-        alert(_this.state.expense.amount);
+        alert(JSON.stringify(_this.state.expense));
       };
 
       _this.handleCategoryClick = function (text) {
@@ -103276,7 +103276,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
       _this.state = {
         expense: {
-          category: "default",
+          category: _this.props.categories[0],
           amount: 0
         }
       };

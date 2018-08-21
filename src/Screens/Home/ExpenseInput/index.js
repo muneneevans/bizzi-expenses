@@ -41,7 +41,7 @@ class ExpenseInput extends Component {
     super(props);
     this.state = {
       expense: {
-        category: "default",
+        category: this.props.categories[0],
         amount: 0
       }
     };
@@ -51,7 +51,7 @@ class ExpenseInput extends Component {
   }
 
   handleSubmit = () => {
-    alert(this.state.expense.amount);
+    alert(JSON.stringify(this.state.expense));
   };
 
   handleCategoryClick = text => {
