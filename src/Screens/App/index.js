@@ -32,6 +32,8 @@ export const theme = {
   tinyFontSize: 12
 };
 
+
+
 export const colorOptions = {
   orange: {
     faint: "#FFF3E0",
