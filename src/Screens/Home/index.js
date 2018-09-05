@@ -14,6 +14,8 @@ import {
 //import screens
 import Banner from "./Banner";
 import CategoryList from "./CategoryList";
+import Header from "./Header";
+import { colorOptions } from "../App";
 
 const styles = StyleSheet.create({
   homeContainer: {
@@ -42,12 +44,16 @@ class Home extends Component {
       <ScrollView contentContainerStyle={homeContainer}>
         <View style={banner}>
           {getCatgoriesProcess.status === processTypes.SUCCESS && (
-            <Banner theme={screenProps.theme} categories={categories} />
+            // <Banner theme={screenProps.theme} categories={categories} />
+            <Header
+              theme={screenProps.theme}
+              colorOptions={screenProps.colorOptions}
+            />
           )}
-          {/* <Banner theme={screenProps.theme} categories={categories} /> */}
         </View>
         <View style={content}>
-          <CategoryList categories={categories} />
+          <Banner theme={screenProps.theme} categories={categories} />
+          {/* <CategoryList categories={categories} /> */}
         </View>
       </ScrollView>
     );
