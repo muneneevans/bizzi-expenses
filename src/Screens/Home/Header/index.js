@@ -1,6 +1,12 @@
-import React from "react";
-import { View, Text, StyleSheet, TextInput } from "react-native";
-import { theme, colorOptions } from "../../../Store/Configuration/theme";
+import React, { Component } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity
+} from "react-native";
+import { theme } from "../../../Store/Configuration/theme";
 import Icon from "react-native-vector-icons/dist/Feather";
 
 const styles = StyleSheet.create({
@@ -61,59 +67,60 @@ const expenseInputStyles = StyleSheet.create({
     color: "#858585"
   }
 });
-const Header = () => {
-  return (
-    <View style={styles.parentContainer}>
-      <Text style={styles.labelText}>Just spent</Text>
-      <View style={expenseInputStyles.parentContainer}>
-        <View style={expenseInputStyles.expenseInputContainer}>
-          <TextInput
-            style={expenseInputStyles.expenseTextInputBox}
-            placeholderTextColor={theme.PRIMARY_COLOR}
-            keyboardType="number-pad"
-          >
-            50
-          </TextInput>
-          <Text style={expenseInputStyles.expenseTextInputBox}>$</Text>
+
+const expenseValues = [10, 50, 150, 200, 250, 300, 400, 500];
+
+class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      amount: 50
+    };
+
+    this.handleChipTap = this.handleChipTap.bind(this)
+  }
+  handleChipTap = amount => {
+    this.setState({
+      ...this.state,
+      amount
+    });
+  };
+
+  render() {
+    return (
+      <View style={styles.parentContainer}>
+        <Text style={styles.labelText}>Just spent</Text>
+        <View style={expenseInputStyles.parentContainer}>
+          <View style={expenseInputStyles.expenseInputContainer}>
+            <TextInput
+              style={expenseInputStyles.expenseTextInputBox}
+              placeholderTextColor={theme.PRIMARY_COLOR}
+              keyboardType="number-pad"
+            >
+              {this.state.amount}
+            </TextInput>
+            <Text style={expenseInputStyles.expenseTextInputBox}>$</Text>
+          </View>
+          <View style={expenseInputStyles.chipsContainer}>
+            {expenseValues.map((value, index) => (
+              <TouchableOpacity style={expenseInputStyles.chip} key={index} onPress={()=>{this.handleChipTap(value)}}>
+                <Text>{value}</Text>
+              </TouchableOpacity>
+            ))}
+          </View>
         </View>
-        <View style={expenseInputStyles.chipsContainer}>
-          <View style={expenseInputStyles.chip}>
-            <Text>50</Text>
-          </View>
-          <View style={expenseInputStyles.chip}>
-            <Text>100</Text>
-          </View>
-          <View style={expenseInputStyles.chip}>
-            <Text>150</Text>
-          </View>
-          <View style={expenseInputStyles.chip}>
-            <Text>200</Text>
-          </View>
-          <View style={expenseInputStyles.chip}>
-            <Text>250</Text>
-          </View>
-          <View style={expenseInputStyles.chip}>
-            <Text>300</Text>
-          </View>
-          <View style={expenseInputStyles.chip}>
-            <Text>400</Text>
-          </View>
-          <View style={expenseInputStyles.chip}>
-            <Text>450</Text>
-          </View>
+        <Text style={styles.labelText}>on</Text>
+        <View style={expenseInputStyles.parentContainer}>
+          <Icon
+            name={"film"}
+            size={theme.FONT_SIZE_MASSIVE + 15}
+            color={theme.PRIMARY_COLOR}
+          />
+          <Text style={expenseInputStyles.expenseTextInputBox}>coffee</Text>
         </View>
       </View>
-      <Text style={styles.labelText}>on</Text>
-      <View style={expenseInputStyles.parentContainer}>
-        <Icon
-          name={"film"}
-          size={theme.FONT_SIZE_MASSIVE + 15}
-          color={theme.PRIMARY_COLOR}
-        />
-        <Text style={expenseInputStyles.expenseTextInputBox}>coffee</Text>
-      </View>
-    </View>
-  );
-};
+    );
+  }
+}
 
 export default Header;
