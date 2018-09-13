@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   banner: {
-    height: 250,
+    height: 270,
     elevation: 7,
     alignItems: "stretch"
   },

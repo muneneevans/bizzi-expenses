@@ -13,9 +13,9 @@ const styles = StyleSheet.create({
   parentContainer: {
     flex: 1,
     backgroundColor: theme.PRIMARY_BACKGROUND_COLOR,
-    paddingTop: 15,
-    paddingBottom: 15,
-    padding: 5,
+    paddingTop: 5,
+    paddingBottom: 5,
+    padding: 15,
     flexDirection: "column",
     justifyContent: "space-between"
   },
@@ -33,22 +33,31 @@ const expenseInputStyles = StyleSheet.create({
     alignItems: "center"
   },
   expenseInputContainer: {
-    flex: 1,
+    flex: 2,
     flexDirection: "row",
     justifyContent: "flex-start",
     alignItems: "center"
   },
   expenseTextInputBox: {
     fontFamily: theme.PRIMARY_FONT_FAMILY,
-    fontSize: theme.FONT_SIZE_MASSIVE + 15,
+    fontSize: theme.FONT_SIZE_MASSIVE + 20,
     padding: 0,
     color: theme.PRIMARY_COLOR,
     justifyContent: "flex-end",
     alignItems: "center"
   },
-  categoryContainer: {},
+  categoryRowContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center"
+  },
+  categoryContainer: {
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "center"
+  },
   chipsContainer: {
-    flex: 3,
+    flex: 5,
     flexDirection: "row",
     justifyContent: "flex-end",
     flexWrap: "wrap"
@@ -63,8 +72,12 @@ const expenseInputStyles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginLeft: 5,
-    borderColor: "#858585",
-    color: "#858585"
+    borderColor: "#B0B0B0",
+    color: "#B0B0B0"
+  },
+  chipText: {
+    fontFamily: theme.PRIMARY_FONT_FAMILY,
+    color: "#B0B0B0"
   }
 });
 
@@ -77,7 +90,7 @@ class Header extends Component {
       amount: 50
     };
 
-    this.handleChipTap = this.handleChipTap.bind(this)
+    this.handleChipTap = this.handleChipTap.bind(this);
   }
   handleChipTap = amount => {
     this.setState({
@@ -103,20 +116,35 @@ class Header extends Component {
           </View>
           <View style={expenseInputStyles.chipsContainer}>
             {expenseValues.map((value, index) => (
-              <TouchableOpacity style={expenseInputStyles.chip} key={index} onPress={()=>{this.handleChipTap(value)}}>
-                <Text>{value}</Text>
+              <TouchableOpacity
+                style={expenseInputStyles.chip}
+                key={index}
+                onPress={() => {
+                  this.handleChipTap(value);
+                }}
+              >
+                <Text style={expenseInputStyles.chipText}>{value}</Text>
               </TouchableOpacity>
             ))}
           </View>
         </View>
         <Text style={styles.labelText}>on</Text>
-        <View style={expenseInputStyles.parentContainer}>
-          <Icon
-            name={"film"}
-            size={theme.FONT_SIZE_MASSIVE + 15}
-            color={theme.PRIMARY_COLOR}
-          />
-          <Text style={expenseInputStyles.expenseTextInputBox}>coffee</Text>
+        <View style={expenseInputStyles.categoryRowContainer}>
+          <View style={expenseInputStyles.categoryContainer}>
+            <Icon
+              name={"film"}
+              size={theme.FONT_SIZE_MASSIVE + 15}
+              color={theme.PRIMARY_COLOR}
+            />
+            <Text style={expenseInputStyles.expenseTextInputBox}>coffee</Text>
+          </View>
+          <TouchableOpacity>
+            <Icon
+              name={"check"}
+              size={theme.FONT_SIZE_MASSIVE + 15}
+              color={theme.PRIMARY_COLOR}
+            />
+          </TouchableOpacity>
         </View>
       </View>
     );
